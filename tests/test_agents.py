@@ -53,7 +53,7 @@ def header(msg):
 
 async def test_sec_agent():
     header("TEST: SEC Filing Agent")
-    from vertex.agents.sec_agent import fetch_sec_filing, _get_cik_for_ticker
+    from backend.agents.sec_agent import fetch_sec_filing, _get_cik_for_ticker
 
     # Test CIK resolution
     cik = _get_cik_for_ticker("AAPL")
@@ -90,7 +90,7 @@ async def test_sec_agent():
 
 async def test_github_agent():
     header("TEST: GitHub Signal Agent")
-    from vertex.agents.github_agent import fetch_github_signals
+    from backend.agents.github_agent import fetch_github_signals
 
     # Test with well-known public repo
     print("Fetching GitHub signals for stripe/stripe-python...")
@@ -119,8 +119,8 @@ async def test_github_agent():
 
 async def test_market_agent():
     header("TEST: Market Signal Agent")
-    from vertex.config import settings
-    from vertex.agents.market_agent import fetch_market_signals
+    from backend.config import settings
+    from backend.agents.market_agent import fetch_market_signals
 
     if not settings.alpha_vantage_key or settings.alpha_vantage_key == "your_alpha_vantage_key_here":
         warn("ALPHA_VANTAGE_API_KEY not set — skipping market agent test")
@@ -146,8 +146,8 @@ async def test_market_agent():
 
 async def test_news_agent():
     header("TEST: News & Sentiment Agent")
-    from vertex.config import settings
-    from vertex.agents.news_agent import fetch_news_sentiment, _fetch_yahoo_rss
+    from backend.config import settings
+    from backend.agents.news_agent import fetch_news_sentiment, _fetch_yahoo_rss
 
     # Test Yahoo RSS fallback (no key needed)
     print("Testing Yahoo RSS fallback for AAPL (no key needed)...")
@@ -175,7 +175,7 @@ async def test_news_agent():
 
 def test_memory_store():
     header("TEST: Graph Memory Store")
-    from vertex.graph.memory_store import MemoryStore
+    from backend.graph.memory_store import MemoryStore
 
     store = MemoryStore()
     ok(f"MemoryStore initialised, graph path: {store.path}")
@@ -209,7 +209,7 @@ def test_memory_store():
 
 def test_rag_store():
     header("TEST: RAG Vector Store")
-    from vertex.graph.rag_store import (
+    from backend.graph.rag_store import (
         index_sec_filing, index_analyst_note, retrieve_context, get_collection_stats
     )
 
@@ -251,14 +251,14 @@ def test_rag_store():
 
 async def test_orchestrator_smoke():
     header("TEST: Orchestrator (smoke test — requires LLM key)")
-    from vertex.config import settings
+    from backend.config import settings
 
     if not settings.groq_api_key or settings.groq_api_key == "your_openai_key_here":
         warn("OPENAI_API_KEY not set — skipping orchestrator test")
         warn("Set key in .env file to run full debate loop")
         return
 
-    from vertex.graph.orchestrator import run_analysis
+    from backend.graph.orchestrator import run_analysis
     print("Running AAPL analysis (this will take 1-3 minutes)...")
 
     events = []

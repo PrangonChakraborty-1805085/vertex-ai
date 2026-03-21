@@ -209,7 +209,7 @@ with st.sidebar:
             f"{health.get('graph_edges', 0)} analyses"
         )
     else:
-        st.error("⚠ API offline — start with: `uvicorn vertex.api.main:app --reload`")
+        st.error("⚠ API offline — start with: `uvicorn backend.api.main:app --reload`")
 
     st.divider()
 
