@@ -1,0 +1,36 @@
+# VERTEX — requirements.txt
+# Python 3.11 | Clean dependency set — no ChromaDB, no HuggingFace conflicts
+
+# ── Vector store (replaces ChromaDB) ─────────────────────────────────────────
+qdrant-client==1.12.1      # works on Windows, Linux, Docker, Qdrant Cloud
+
+# ── Embeddings (Cohere free API — no DLL issues) ──────────────────────────────
+cohere==5.20.7
+
+# ── LLM providers ─────────────────────────────────────────────────────────────
+langchain-groq==0.3.2
+langchain==0.3.25
+langchain-openai==0.3.16
+langchain-community==0.3.24
+langgraph==0.4.1
+
+# ── API + Streaming ───────────────────────────────────────────────────────────
+fastapi==0.115.12
+uvicorn[standard]==0.34.2
+sse-starlette==2.3.4
+httpx==0.28.1
+
+# ── UI ────────────────────────────────────────────────────────────────────────
+streamlit==1.45.1
+plotly==6.1.1
+pandas==2.2.3
+
+# ── Graph memory ──────────────────────────────────────────────────────────────
+networkx==3.6.1
+
+# ── Utils ─────────────────────────────────────────────────────────────────────
+python-dotenv==1.1.0
+pydantic==2.11.4
+tiktoken==0.9.0
+newspaper3k==0.2.8
+lxml_html_clean

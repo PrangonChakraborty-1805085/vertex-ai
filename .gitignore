@@ -1,0 +1,59 @@
+# VERTEX — .gitignore
+
+# ── Environment & secrets (NEVER commit these) ────────────────────────────────
+.env
+.env.local
+.env.production
+*.key
+secrets/
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv/
+pip-wheel-metadata/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ── Data (never commit vector store or graph data) ────────────────────────────
+data/
+*.pkl
+*.db
+*.sqlite
+
+# ── IDE ───────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ── Logs ─────────────────────────────────────────────────────────────────────
+*.log
+logs/
+
+# ── Testing ───────────────────────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ── Streamlit ─────────────────────────────────────────────────────────────────
+.streamlit/secrets.toml
+
+# ────── Deployment Instructions ───────────────────────────────────────────────
+DEPLOYMENT.md
+
+# ────── Others ────────────────────────────────────────────────────────────────
+create_init_files.py
+main_events_patch.py
+railway.toml
+apply_llm_patch.py
