@@ -14,7 +14,9 @@ import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
-API_BASE = "http://localhost:8000"
+import os
+
+API_BASE = os.getenv("BACKEND_URL", "http://localhost:8000")
 
 # ── Page config ───────────────────────────────────────────────────────────────
 st.set_page_config(
