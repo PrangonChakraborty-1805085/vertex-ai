@@ -351,8 +351,10 @@ with tab_analyse:
                         my_bar.progress(33, text=progress_text_mapping.get("agent_start", "Agent started"))
                     elif last_event_type == "debate_round":
                         my_bar.progress(67, text=progress_text_mapping.get("debate_round", "Debate round in progress"))
-                    elif last_event_type == "memory_update":
+                    elif last_event_type == "memory_update" and len(events_data) >= 5:  # heuristic: memory update usually comes after several events
                         my_bar.progress(98, text=progress_text_mapping.get("memory_update", "Updating knowledge graph"))
+                    elif last_event_type == "memory_update":
+                        my_bar.progress(30, text=progress_text_mapping.get("memory_update", "Updating knowledge graph"))    
 
                 # Render feed from stored events by re-fetching
                 # (Streamlit doesn't support true SSE natively — we poll)
